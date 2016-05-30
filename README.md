@@ -19,8 +19,9 @@ $ pip install jsonLookup
 ### Register to JSONFields
 
 ```python
-from jsonLookup import hasLookup
+from jsonLookup import hasLookup,jcontainsLookup
 JSONField.register_lookup(hasLookup)
+JSONField.register_lookup(jcontainsLookup)
 ```
 
 ### Write your JSON queries
