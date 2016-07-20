@@ -10,5 +10,4 @@ class jcontainsLookup(Lookup):
         rhs, rhs_params = self.process_rhs(compiler, connection)
 
         params = lhs_params + rhs_params
-        print "JSON_CONTAINS(%s, '%s')" % (lhs,'%s'), rhs_params[0]
         return "JSON_CONTAINS(%s, %s)"%(lhs,'%s'),rhs_params[0]
