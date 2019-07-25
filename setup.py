@@ -3,7 +3,7 @@ import setuptools
 from distutils.core import setup
 
 setup(name='jsonLookup',
-      version='0.5.2',
+      version='0.6.0',
       description='Search MySQL JSON fields in Django',
       author='Mohamed El-Kalioby',
       author_email='mkalioby@mkalioby.com',
