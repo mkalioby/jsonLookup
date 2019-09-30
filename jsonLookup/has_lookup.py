@@ -15,11 +15,16 @@ class hasLookup(Lookup):
         lst[1]=lst[1].strip()
         if lst[1].isdigit():
             lst[1]=int(lst[1])
-        if lst[1].lower() in ("none","null"):
-            lst[1]="IS NULL"
-            return "JSON_EXTRACT(`%s`,'%s') %s" % (lhs, lst[0], lst[1]), []
-        if lst[1].lower() in ("is not null", "is not none", "!null", "!none"):
-            lst[1] = "IS NOT NULL"
-            return "JSON_EXTRACT(`%s`,'%s') %s" % (lhs, lst[0],lst[1]),[]
-        return "JSON_EXTRACT(`%s`,'%s')= %s" %(lhs, lst[0],rhs),[lst[1]]
+        if type(lst[1]) == type("a"):
+            if lst[1].lower() in ("none","null"):
+                lst[1]="IS NULL"
+#                return "JSON_EXTRACT(`%s`,'%s') %s" % (lhs, lst[0], lst[1]), []
+            elif lst[1].lower() in ("is not null", "is not none", "!null", "!none"):
+                lst[1] = "IS NOT NULL"
+            else:
+                lst[1] = " = '%s'"%(lst[1])
+        else:
+            lst[1]=" = %s"%(lst[1])
+  #      return "JSON_EXTRACT(`%s`,'%s') %s" % (lhs, lst[0],lst[1]),[]
+        return "JSON_EXTRACT(%s,'%s')%s" %(lhs, lst[0],lst[1]),[]
 
